@@ -4,7 +4,8 @@
 # running before running the docker image:
 #   docker run -it -e DISPLAY=192.168.59.3:0 -v /Users/eric/:/home/ aoflagger
 # The -v argument mounts your home directory into the container.
-# By default, this will run `rfigui` upon starting. Change CMD to alter this
+# By default, this will run `rfigui` upon starting. Change CMD to alter this.
+# Solutions from https://github.com/docker/docker/issues/8710#issuecomment-71113263
 
 FROM ubuntu:trusty
 
