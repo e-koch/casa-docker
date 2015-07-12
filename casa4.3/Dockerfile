@@ -17,7 +17,16 @@ ENV PATH /usr/local/bin/CASA/casa-release-4.3.1-el6:$PATH
 # Need to set a user for CASA to startup right
 RUN useradd -ms /bin/bash user
 ENV HOME /home/user
-
+ENV USER user
 RUN cd /home/user/
 
-CMD export USER='user' && casa
+
+ENV DISPLAY :99
+
+# Install Xvfb init script
+ADD xvfb_init /etc/init.d/xvfb
+RUN chmod a+x /etc/init.d/xvfb
+ADD xvfb-daemon-run /usr/bin/xvfb-daemon-run
+RUN chmod a+x /usr/bin/xvfb-daemon-run
+
+CMD casa
