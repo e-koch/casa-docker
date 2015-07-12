@@ -1,3 +1,11 @@
+
+# On OSX, X11 forwarding needs to have:
+#   socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"
+# running before running the docker image:
+#   docker run -it -e DISPLAY=192.168.59.3:0 -v /Users/eric/:/home/ aoflagger
+# The -v argument mounts your home directory into the container.
+# By default, this will run `rfigui` upon starting. Change CMD to alter this
+
 FROM ubuntu:trusty
 
 RUN apt-get update && apt-get install -y software-properties-common
