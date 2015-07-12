@@ -10,6 +10,8 @@ RUN wget --quiet https://svn.cv.nrao.edu/casa/linux_distro/release/el6/old/casa-
     cd /usr/local/bin/CASA &&\
     tar zxvf casa-release-4.3.1-el6.tar.gz
 
+RUN apt-get install -qqy x11-apps xauth
+
 ENV PATH /usr/local/bin/CASA/casa-release-4.3.1-el6:$PATH
 
 # Need to set a user for CASA to startup right
